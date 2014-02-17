@@ -7,6 +7,7 @@ char *key;
     int               InsertionPosition;     /* Position for insertion */
     int     FindPrefixPosition();
     int               Count, Found, i;
+    struct PageHdr   *FetchPage();
 
     Count = 0;
     int PrefixFind = 0;
@@ -25,7 +26,7 @@ char *key;
 		SavedKLT = KeyListTraverser;
 		KeyListTraverser = KeyListTraverser->Next;
 		if(KeyListTraverser == NULL){
-			struct PageHdr *NextPage = FetchPage(PagePtr->PgNumOfNxtLfPg);
+			struct PageHdr *NextPage = (struct PageHdr *)FetchPage(PagePtr->PgNumOfNxtLfPg);
 			// printf("%d\n", PagePtr->PgNumOfNxtLfPg);
 			PagePtr = NextPage;
 			KeyListTraverser = PagePtr->KeyListPtr;

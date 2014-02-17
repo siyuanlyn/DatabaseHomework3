@@ -7,6 +7,7 @@ char *key;
     int               InsertionPosition;     /* Position for insertion */
     int     FindInsertionPosition();
     int               Count, Found, i;
+    struct PageHdr   *FetchPage();
 
     Count = 0;
     int wordsFound = 0;
